@@ -3,24 +3,5 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(require('cors')());
-
-// MPESA DARAJA CONFIG - UTAWEKA KEYS ZAKO HAPA
-const MPESA_CONSUMER_KEY = "YOUR_CONSUMER_KEY";
-const MPESA_CONSUMER_SECRET = "YOUR_CONSUMER_SECRET";
-const MPESA_SHORTCODE = "174379"; // test shortcode
-const MPESA_PASSKEY = "YOUR_PASSKEY";
-
-app.get('/', (req,res)=>{
- res.send(`
- <h1>BOSSY AVIATOR V4 - MPESA LIVE</h1>
- <p>Server running! Backend ready for Mpesa STK Push.</p>
- <p>Game files ziko wapi? Add index.html next.</p>
- `)
-});
-
-app.post('/api/mpesa/deposit', async (req,res)=>{
-  const {phone, amount} = req.body;
-  res.json({success:true, message: `STK Push sent to ${phone} for KES ${amount}. (Add real Daraja code)`});
-});
-
-app.listen(PORT, ()=>console.log('Bossy running on '+PORT));
+app.get('/', (req,res)=>res.send('<h1>BOSSY V4 LIVE</h1>'));
+app.listen(PORT, ()=>console.log(PORT));
